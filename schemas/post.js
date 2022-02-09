@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 export default {
   name: "post",
   title: "Post",
@@ -11,20 +11,29 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
-      validation: Rule =>  Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "slug",
       title: "Slug",
-      type: "string",
-      initialValue: (String(uuidv4())),
+      type: "slug",
+      validation: (Rule) => Rule.required(),
+      options: {
+        source: (doc) => {
+          // // const date = `${new Date(doc.publishedAt).getFullYear()}-${new Date(doc.publishedAt).getMonth()+1}-${new Date(doc.publishedAt).getDay()}`
+          // console.log(doc);
+          return `visut-${new Date().getTime()}`;
+        },
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
+      },
     },
     {
       name: "author",
       title: "Author",
       type: "reference",
       to: { type: "author" },
-      validation: Rule =>  Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "mainImage",
@@ -33,27 +42,27 @@ export default {
       options: {
         hotspot: true,
       },
-      validation: Rule =>  Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "category",
       title: "Category",
       type: "reference",
       to: { type: "category" },
-      validation: Rule =>  Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
-      initialValue: (new Date()).toISOString(),
-      validation: Rule =>  Rule.required()
+      initialValue: new Date().toISOString(),
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "body",
       title: "Body",
       type: "blockContent",
-      validation: Rule =>  Rule.required()
+      validation: (Rule) => Rule.required(),
     },
   ],
 
