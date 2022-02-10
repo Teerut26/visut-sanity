@@ -25,7 +25,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     // post,
-    author,
+    // author,
     // category,
     // announcement,
     // When added to this list, object types can be used as
