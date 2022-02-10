@@ -4,24 +4,20 @@ export default {
   type: "document",
   fields: [
     {
-      name: "mainImage",
-      title: "Main image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
+      name: "title",
+      title: "Title",
+      type: "string",
     },
+    // {
+    //   name: "body",
+    //   title: "Body",
+    //   type: "blockContent",
+    //   validation: (Rule) => Rule.required(),
+    // },
     {
       name: "href",
       title: "Href",
       type: "string",
-    },
-    {
-      name: "author",
-      title: "Author",
-      type: "reference",
-      to: { type: "author" },
-      validation: (Rule) => Rule.required(),
     },
     {
       name: "publishedAt",
@@ -32,7 +28,7 @@ export default {
   ],
   preview: {
     select: {
-      title: "publishedAt"
+      title: "title"
     }
   },
 };

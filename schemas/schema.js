@@ -24,15 +24,15 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    post,
+    // post,
     author,
-    category,
-    announcement,
+    // category,
+    // announcement,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     indexPost,
-    indexPostBlockContent,
+    // indexPostBlockContent,
     blockContent,
-    announcementBlockContent,
+    // announcementBlockContent,
   ]),
 })
